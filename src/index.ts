@@ -6,8 +6,8 @@ import * as appInsights from "applicationinsights";
 
 // Set your Instrumentation Key in the environment variable APPINSIGHTS_INSTRUMENTATIONKEY
 // Example: export APPINSIGHTS_INSTRUMENTATIONKEY="your-key-here"
-if (process.env.PPLICATIONINSIGHTS_CONNECTION_STRING) {
-  appInsights.setup(process.env.PPLICATIONINSIGHTS_CONNECTION_STRING)
+if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING) {
+  appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
     .setAutoCollectRequests(true)
     .setAutoCollectExceptions(true)
     .start();
