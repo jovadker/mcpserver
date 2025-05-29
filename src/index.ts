@@ -2,6 +2,20 @@ import express, { Request, Response } from "express";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 
+import * as appInsights from "applicationinsights";
+
+// Set your Instrumentation Key in the environment variable APPINSIGHTS_INSTRUMENTATIONKEY
+// Example: export APPINSIGHTS_INSTRUMENTATIONKEY="your-key-here"
+if (process.env.PPLICATIONINSIGHTS_CONNECTION_STRING) {
+  appInsights.setup(process.env.PPLICATIONINSIGHTS_CONNECTION_STRING)
+    .setAutoCollectRequests(true)
+    .setAutoCollectExceptions(true)
+    .start();
+  console.log("AppInsights initialized.");
+} else {
+  console.warn("APPINSIGHTS_INSTRUMENTATIONKEY not set. Telemetry is disabled.");
+}
+
 const server = new McpServer({
   name: "jokesMCP",
   description: "A server that provides jokes",
